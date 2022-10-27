@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import { Section } from './components/Section';
 
 class App extends Component {
   constructor(props) {
@@ -11,7 +12,27 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Hello!</h1>
+        <h1>CV Application</h1>
+
+        <Section className="info-general" sectionTitle="Personal Details">
+          {/* name */}
+          {/* email */}
+          {/* phone num */}
+        </Section>
+
+        <Section className="info-experience" sectionTitle="Work Experience">
+          {/* company name */}
+          {/* position / title */}
+          {/* job tasks */}
+          {/* date (range) of work */}
+          {/* add button for extra... */}
+        </Section>
+
+        <Section className="info-education" sectionTitle="Education">
+          {/* school name */}
+          {/* title of study */}
+          {/* date (range) of study */}
+        </Section>
       </div>
     );
   }
