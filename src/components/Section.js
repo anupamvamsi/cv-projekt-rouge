@@ -8,9 +8,7 @@ export class Section extends Component {
 
   render() {
     return (
-      <section className={this.props.className}>
-        <h3>{this.props.sectionTitle}</h3>
-      </section>
+      <section className={this.props.className}>{this.props.children}</section>
     );
   }
 }

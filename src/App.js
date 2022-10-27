@@ -1,6 +1,9 @@
 import './App.css';
 import React, { Component } from 'react';
 import { Section } from './components/Section';
+import { WorkSection } from './components/WorkSection';
+import { SectionTitle } from './components/SectionTitle';
+import { EducationSection } from './components/EducationSection';
 
 class App extends Component {
   constructor(props) {
@@ -15,23 +18,23 @@ class App extends Component {
         <h1>CV Application</h1>
 
         <Section className="info-general" sectionTitle="Personal Details">
-          {/* name */}
-          {/* email */}
-          {/* phone num */}
+          <SectionTitle className="section-title">
+            Personal Details
+          </SectionTitle>
         </Section>
 
-        <Section className="info-experience" sectionTitle="Work Experience">
-          {/* company name */}
-          {/* position / title */}
-          {/* job tasks */}
-          {/* date (range) of work */}
-          {/* add button for extra... */}
+        <Section className="info-work">
+          <SectionTitle className="section-title">Work Experience</SectionTitle>
+          <WorkSection className="info-experience"></WorkSection>
         </Section>
 
         <Section className="info-education" sectionTitle="Education">
-          {/* school name */}
-          {/* title of study */}
-          {/* date (range) of study */}
+          <SectionTitle className="section-title">Education</SectionTitle>
+          <EducationSection>
+            {/* school name */}
+            {/* title of study */}
+            {/* date (range) of study */}
+          </EducationSection>
         </Section>
       </div>
     );
