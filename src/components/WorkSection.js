@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BtnDelete } from './BtnDelete';
+import { BtnSubmit } from './BtnSubmit';
 import { DateRange } from './DateRange';
 import { Input } from './Input';
 import { Section } from './Section';
@@ -20,7 +22,9 @@ export class WorkSection extends Component {
         {/* <Input labelDesc="TASKS? NEEDS TEXTAREA" inputType="text"/> */}
 
         <DateRange />
-        {/* DELETE BUTTON */}
+
+        <BtnSubmit />
+        <BtnDelete />
       </Section>
     );
   }

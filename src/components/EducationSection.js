@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Section } from './Section';
 import { Input } from './Input';
 import { DateRange } from './DateRange';
+import { BtnDelete } from './BtnDelete';
+import { BtnSubmit } from './BtnSubmit';
 
 export class EducationSection extends Component {
   constructor(props) {
@@ -20,7 +22,9 @@ export class EducationSection extends Component {
           inputType="text"
         />
         <DateRange />
-        {/* DELETE BUTTON */}
+
+        <BtnSubmit />
+        <BtnDelete />
       </Section>
     );
   }
