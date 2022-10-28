@@ -4,6 +4,7 @@ import { Section } from './components/Section';
 import { WorkSection } from './components/WorkSection';
 import { SectionTitle } from './components/SectionTitle';
 import { EducationSection } from './components/EducationSection';
+import { PersonalSection } from './components/PersonalSection';
 
 class App extends Component {
   constructor(props) {
@@ -21,20 +22,17 @@ class App extends Component {
           <SectionTitle className="section-title">
             Personal Details
           </SectionTitle>
+          <PersonalSection className="info-personal" />
         </Section>
 
         <Section className="info-work">
           <SectionTitle className="section-title">Work Experience</SectionTitle>
-          <WorkSection className="info-experience"></WorkSection>
+          <WorkSection className="info-experience" />
         </Section>
 
         <Section className="info-education" sectionTitle="Education">
           <SectionTitle className="section-title">Education</SectionTitle>
-          <EducationSection>
-            {/* school name */}
-            {/* title of study */}
-            {/* date (range) of study */}
-          </EducationSection>
+          <EducationSection />
         </Section>
       </div>
     );
