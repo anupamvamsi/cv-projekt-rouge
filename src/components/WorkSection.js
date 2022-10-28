@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BtnAdd } from './BtnAdd';
 import { BtnDelete } from './BtnDelete';
 import { BtnSubmit } from './BtnSubmit';
 import { DateRange } from './DateRange';
@@ -23,8 +24,11 @@ export class WorkSection extends Component {
 
         <DateRange />
 
-        <BtnSubmit />
-        <BtnDelete />
+        <div className="btn-container">
+          <BtnSubmit />
+          <BtnDelete />
+          <BtnAdd />
+        </div>
       </Section>
     );
   }

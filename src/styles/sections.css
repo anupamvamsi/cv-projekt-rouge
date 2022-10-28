@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito Sans', 'sans-serif';
+
+  margin: 0;
+}
+
+.title-container {
+  margin: 0 0 2em 0;
+  padding: 0.5em;
+  background-color: teal;
+}
+
+.title {
+  /* margin-block-start: 0px; */
+  margin: 0;
+  /* margin-block-end: 0px; */
+  color: white;
+}
+
+.editor-container {
+  display: grid;
+
+  width: 40%;
+  margin-left: 1em;
+  padding: 2em;
+
+  border-radius: 1em;
+  background-color: whitesmoke;
+}
+
+.section-title {
+  justify-self: center;
+
+  text-align: left;
+  color: white;
+
+  width: 100%;
+  padding: 0.2em 0.4em;
+
+  border-radius: 0.4em;
+  background-color: teal;
+}
+
+.details-personal,
+.details-work,
+.details-education {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1em;
+
+  /* background-color: red; */
+}
+
+/* Labels are used as containers: */
+/* Label and the input field */
+.input-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1em;
+
+  padding-left: 0.4em;
+
+  /* background-color: yellow; */
+}
+
+.input-txt {
+  width: 80%;
+}
+
+/* Select the checkbox 'Currently here' */
+.date-range > .input-label {
+  justify-content: left;
+}
+
+.date-range {
+  display: grid;
+  grid-template-rows: 1fr;
+
+  gap: 1em;
+}
+
+.input-dates {
+  display: flex;
+  align-items: center;
+
+  gap: 1em;
+}
+
+/* Buttons */
+.btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.btn-container > button {
+  color: white;
+
+  padding: 0.6em 1em;
+
+  border: none;
+  border-radius: 0.4em;
+  background-color: teal;
+}
+
+.btn-container > button:hover {
+  cursor: pointer;
+  background-color: rgb(6, 170, 170);
+}

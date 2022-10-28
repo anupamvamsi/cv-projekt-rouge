@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BtnSubmit } from './BtnSubmit';
 import { Input } from './Input';
 import { Section } from './Section';
+import '../styles/sections.css';
 
 export class PersonalSection extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ export class PersonalSection extends Component {
         <Input className="input-txt" labelDesc="Email" type="email" />
         <Input className="input-txt" labelDesc="Phone" type="tel" />
 
-        <BtnSubmit />
+        <div className="btn-container">
+          <BtnSubmit />
+        </div>
       </Section>
     );
   }

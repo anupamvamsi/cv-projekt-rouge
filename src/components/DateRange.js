@@ -11,15 +11,21 @@ export class DateRange extends Component {
   render() {
     return (
       <div class="date-range">
+        <div class="input-dates">
+          <Input
+            className="input-date-start"
+            labelDesc="From"
+            inputType="date"
+          />
+          {/* "OR" it with a "present" checkbox by using workingStatus */}
+          <Input className="input-date-end" labelDesc="To" inputType="date" />
+        </div>
+
         <Input
           className="input-chkbox"
           labelDesc="Currently here"
           inputType="checkbox"
         />
-
-        <Input className="input-date-start" labelDesc="From" inputType="date" />
-        {/* "OR" it with a "present" checkbox by using workingStatus */}
-        <Input className="input-date-end" labelDesc="To" inputType="date" />
       </div>
     );
   }

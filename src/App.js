@@ -16,24 +16,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>CV Application</h1>
+        <div className="title-container">
+          <h1 className="title">CV Application</h1>
+        </div>
 
-        <Section className="info-general" sectionTitle="Personal Details">
+        <div className="editor-container">
           <SectionTitle className="section-title">
             Personal Details
           </SectionTitle>
-          <PersonalSection className="info-personal" />
-        </Section>
+          <Section className="info-general" sectionTitle="Personal Details">
+            <PersonalSection className="info-personal" />
+          </Section>
 
-        <Section className="info-work">
           <SectionTitle className="section-title">Work Experience</SectionTitle>
-          <WorkSection className="info-experience" />
-        </Section>
+          <Section className="info-work">
+            <WorkSection className="info-experience" />
+          </Section>
 
-        <Section className="info-education" sectionTitle="Education">
           <SectionTitle className="section-title">Education</SectionTitle>
-          <EducationSection />
-        </Section>
+          <Section className="info-education" sectionTitle="Education">
+            <EducationSection />
+          </Section>
+        </div>
       </div>
     );
   }

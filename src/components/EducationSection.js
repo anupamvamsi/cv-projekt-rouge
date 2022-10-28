@@ -4,6 +4,7 @@ import { Input } from './Input';
 import { DateRange } from './DateRange';
 import { BtnDelete } from './BtnDelete';
 import { BtnSubmit } from './BtnSubmit';
+import { BtnAdd } from './BtnAdd';
 
 export class EducationSection extends Component {
   constructor(props) {
@@ -23,8 +24,11 @@ export class EducationSection extends Component {
         />
         <DateRange />
 
-        <BtnSubmit />
-        <BtnDelete />
+        <div className="btn-container">
+          <BtnSubmit />
+          <BtnDelete />
+          <BtnAdd />
+        </div>
       </Section>
     );
   }
