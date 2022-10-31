@@ -10,8 +10,8 @@ export class DateRange extends Component {
 
   render() {
     return (
-      <div class="date-range">
-        <div class="input-dates">
+      <div className="date-range">
+        <div className="input-dates">
           <Input
             className="input-date-start"
             labelDesc="From"
