@@ -4,7 +4,7 @@ export class Input extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       value: '',
@@ -12,25 +12,25 @@ export class Input extends Component {
     };
   }
 
-  handleChange(e) {
-    if (e.target.type === 'text' || e.target.type === 'date') {
-      this.setState(
-        {
-          value: e.target.value,
-        },
-        () => console.log(`value: ${this.state.value} `)
-      );
-    }
+  // handleChange(e) {
+  //   if (e.target.type === 'text' || e.target.type === 'date') {
+  //     this.setState(
+  //       {
+  //         value: e.target.value,
+  //       },
+  //       () => console.log(`value: ${this.state.value} `)
+  //     );
+  //   }
 
-    if (e.target.type === 'checkbox') {
-      this.setState(
-        {
-          checked: e.target.checked,
-        },
-        () => console.log(`check: ${this.state.checked}`)
-      );
-    }
-  }
+  //   if (e.target.type === 'checkbox') {
+  //     this.setState(
+  //       {
+  //         checked: e.target.checked,
+  //       },
+  //       () => console.log(`check: ${this.state.checked}`)
+  //     );
+  //   }
+  // }
 
   render() {
     return (
@@ -39,7 +39,7 @@ export class Input extends Component {
         <input
           className={this.props.className}
           type={this.props.inputType}
-          onChange={this.handleChange}
+          onChange={this.props.handleChange}
         />
       </label>
     );

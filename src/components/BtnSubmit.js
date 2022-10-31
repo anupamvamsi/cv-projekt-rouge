@@ -9,7 +9,11 @@ export class BtnSubmit extends Component {
 
   render() {
     return (
-      <button className="btn-submit" type="submit">
+      <button
+        className="btn-submit"
+        type="submit"
+        onClick={this.props.handleSubmit}
+      >
         Submit
       </button>
     );
