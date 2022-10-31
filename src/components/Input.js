@@ -4,7 +4,7 @@ export class Input extends Component {
   constructor(props) {
     super(props);
 
-    this.onChange = this.onChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       value: '',
@@ -12,7 +12,7 @@ export class Input extends Component {
     };
   }
 
-  onChange(e) {
+  handleChange(e) {
     if (e.target.type === 'text' || e.target.type === 'date') {
       this.setState(
         {
@@ -39,7 +39,7 @@ export class Input extends Component {
         <input
           className={this.props.className}
           type={this.props.inputType}
-          onChange={this.onChange}
+          onChange={this.handleChange}
         />
       </label>
     );
