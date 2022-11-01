@@ -39,6 +39,7 @@ export class Input extends Component {
         <input
           className={this.props.className}
           type={this.props.inputType}
+          value={this.props.value}
           onChange={this.props.handleChange}
         />
       </label>

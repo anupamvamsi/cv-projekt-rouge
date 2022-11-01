@@ -9,7 +9,11 @@ export class BtnEdit extends Component {
 
   render() {
     return (
-      <button className="btn-edit" type="button">
+      <button
+        className="btn-edit"
+        type="button"
+        onClick={this.props.handleEdit}
+      >
         Edit
       </button>
     );
