@@ -16,15 +16,25 @@ export class DateRange extends Component {
             className="input-date-start"
             labelDesc="From"
             inputType="date"
+            value={this.props.dateStart}
+            handleChange={this.props.handleChange}
           />
           {/* "OR" it with a "present" checkbox by using workingStatus */}
-          <Input className="input-date-end" labelDesc="To" inputType="date" />
+          <Input
+            className="input-date-end"
+            labelDesc="To"
+            inputType="date"
+            value={this.props.dateEnd}
+            handleChange={this.props.handleChange}
+          />
         </div>
 
         <Input
-          className="input-chkbox"
+          className="input-checkbox"
           labelDesc="Currently here"
           inputType="checkbox"
+          checked={this.props.currentlyWorking}
+          handleChange={this.props.handleChange}
         />
       </div>
     );
