@@ -40,6 +40,7 @@ export class Input extends Component {
           className={this.props.className}
           type={this.props.inputType}
           value={this.props.value}
+          checked={this.props.checked}
           onChange={this.props.handleChange}
         />
       </label>

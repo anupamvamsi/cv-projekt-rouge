@@ -23,8 +23,6 @@ export class WorkSection extends Component {
       currentlyWorking: false,
 
       submitted: false,
-
-      workingStatus: false,
     };
   }
 
@@ -66,9 +64,6 @@ export class WorkSection extends Component {
   }
 
   handleSubmit(e) {
-    // console.log(
-    //   `name: ${this.state.name} email: ${this.state.email} phone: ${this.state.phone}`
-    // );
     console.log(`handleSubmit          submitted: ${this.state.submitted}`);
 
     this.setState(
@@ -139,9 +134,9 @@ export class WorkSection extends Component {
           <p>
             {(() => {
               if (!this.state.currentlyWorking) {
-                return `${this.state.dateStart} - ${this.state.dateEnd}`;
+                return `${this.state.dateStart} to ${this.state.dateEnd}`;
               } else {
-                return `${this.state.dateStart} - present`;
+                return `${this.state.dateStart} to present`;
               }
             })()}
           </p>
