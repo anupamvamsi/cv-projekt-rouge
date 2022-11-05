@@ -119,7 +119,7 @@ export class EducationSection extends Component {
 
           <div className="btn-container">
             <BtnEdit handleEdit={this.handleEdit} />
-            <BtnAdd />
+            <BtnAdd add={this.props.add} />
           </div>
         </Section>
       );

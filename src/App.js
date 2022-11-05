@@ -42,70 +42,50 @@ class App extends Component {
   addSection(sectionType) {
     if (sectionType === 'work') {
       const idWork = uniqid();
-      this.setState(
-        {
-          numWorkSection: this.state.numWorkSection + 1,
-          workSections: this.state.workSections.concat(
-            <WorkSection
-              key={idWork}
-              add={() => this.addSection('work')}
-              del={(e) => {
-                this.delSection(e, idWork, 'work');
-              }}
-            />
-          ),
-        },
-        () => {
-          console.log(this.state.numWorkSection, this.state.workSections);
-        }
-      );
+      this.setState({
+        numWorkSection: this.state.numWorkSection + 1,
+        workSections: this.state.workSections.concat(
+          <WorkSection
+            key={idWork}
+            add={() => this.addSection('work')}
+            del={(e) => {
+              this.delSection(e, idWork, 'work');
+            }}
+          />
+        ),
+      });
     }
 
     if (sectionType === 'edu') {
       const idEdu = uniqid();
-      this.setState(
-        {
-          numEduSection: this.state.numEduSection + 1,
-          eduSections: this.state.eduSections.concat(
-            <EducationSection
-              key={idEdu}
-              add={() => this.addSection('edu')}
-              del={(e) => {
-                this.delSection(e, idEdu, 'edu');
-              }}
-            />
-          ),
-        },
-        () => {
-          console.log(this.state.numEduSection, this.state.eduSections);
-        }
-      );
+      this.setState({
+        numEduSection: this.state.numEduSection + 1,
+        eduSections: this.state.eduSections.concat(
+          <EducationSection
+            key={idEdu}
+            add={() => this.addSection('edu')}
+            del={(e) => {
+              this.delSection(e, idEdu, 'edu');
+            }}
+          />
+        ),
+      });
     }
   }
 
   delSection(e, uniqueID, sectionType) {
-    console.log('uID: ', uniqueID);
-
     if (sectionType === 'work') {
-      this.setState(
-        {
-          workSections: this.state.workSections.filter(
-            (s) => s.key !== uniqueID
-          ),
-          numWorkSection: this.state.numWorkSection - 1,
-        },
-        () => console.log(this.state.workSections)
-      );
+      this.setState({
+        workSections: this.state.workSections.filter((s) => s.key !== uniqueID),
+        numWorkSection: this.state.numWorkSection - 1,
+      });
     }
 
     if (sectionType === 'edu') {
-      this.setState(
-        {
-          eduSections: this.state.eduSections.filter((s) => s.key !== uniqueID),
-          numEduSection: this.state.numEduSection - 1,
-        },
-        () => console.log(this.state.eduSections)
-      );
+      this.setState({
+        eduSections: this.state.eduSections.filter((s) => s.key !== uniqueID),
+        numEduSection: this.state.numEduSection - 1,
+      });
     }
   }
 

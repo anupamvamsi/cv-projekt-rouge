@@ -4,33 +4,11 @@ export class Input extends Component {
   constructor(props) {
     super(props);
 
-    // this.handleChange = this.handleChange.bind(this);
-
     this.state = {
       value: '',
       checked: false,
     };
   }
-
-  // handleChange(e) {
-  //   if (e.target.type === 'text' || e.target.type === 'date') {
-  //     this.setState(
-  //       {
-  //         value: e.target.value,
-  //       },
-  //       () => console.log(`value: ${this.state.value} `)
-  //     );
-  //   }
-
-  //   if (e.target.type === 'checkbox') {
-  //     this.setState(
-  //       {
-  //         checked: e.target.checked,
-  //       },
-  //       () => console.log(`check: ${this.state.checked}`)
-  //     );
-  //   }
-  // }
 
   render() {
     return (
