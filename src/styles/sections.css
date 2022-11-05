@@ -103,7 +103,8 @@ body {
   gap: 1em;
 }
 
-.btn-container > button {
+.btn-container > button,
+.btn-add {
   color: white;
 
   padding: 0.6em 1em;
@@ -113,7 +114,8 @@ body {
   background-color: teal;
 }
 
-.btn-container > button:hover {
+.btn-container > button:hover,
+.btn-add:hover {
   cursor: pointer;
   background-color: rgb(6, 170, 170);
 }
