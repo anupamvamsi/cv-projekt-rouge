@@ -28,17 +28,14 @@ export class WorkSection extends Component {
 
   handleChange(e) {
     if (e.target.classList.contains('input-company')) {
-      console.log(e.target.value);
       this.setState({
         company: e.target.value,
       });
     } else if (e.target.classList.contains('input-position')) {
-      console.log(e.target.value);
       this.setState({
         position: e.target.value,
       });
     } else if (e.target.classList.contains('input-date-start')) {
-      console.log(e.target.value);
       this.setState({
         dateStart: e.target.value,
       });
@@ -49,14 +46,12 @@ export class WorkSection extends Component {
           this.state.currentlyWorking === false &&
           this.state.dateStart < e.target.value
         ) {
-          console.log(e.target.value);
           return {
             dateEnd: e.target.value,
           };
         }
       });
     } else if (e.target.classList.contains('input-checkbox')) {
-      console.log(e.target.checked);
       this.setState({
         currentlyWorking: e.target.checked,
       });
@@ -64,32 +59,15 @@ export class WorkSection extends Component {
   }
 
   handleSubmit(e) {
-    console.log(`handleSubmit          submitted: ${this.state.submitted}`);
-
-    this.setState(
-      {
-        submitted: true,
-      },
-      () => {
-        console.log(`handleSubmit setState submitted: ${this.state.submitted}`);
-      }
-    );
+    this.setState({
+      submitted: true,
+    });
   }
 
   handleEdit(e) {
-    // console.log(
-    //   `name: ${this.state.name} email: ${this.state.email} phone: ${this.state.phone}`
-    // );
-    console.log(`handleEdit            submitted: ${this.state.submitted}`);
-
-    this.setState(
-      {
-        submitted: false,
-      },
-      () => {
-        console.log(`handleEdit   setState submitted: ${this.state.submitted}`);
-      }
-    );
+    this.setState({
+      submitted: false,
+    });
   }
 
   render() {

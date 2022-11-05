@@ -38,27 +38,12 @@ export class PersonalSection extends Component {
   }
 
   handleSubmit(e) {
-    // console.log(
-    //   `name: ${this.state.name} email: ${this.state.email} phone: ${this.state.phone}`
-    // );
-    // console.log(`submitted: ${this.state.submitted}`);
-
-    this.setState(
-      {
-        submitted: true,
-      },
-      () => {
-        // console.log(`submitted: ${this.state.submitted}`);
-      }
-    );
+    this.setState({
+      submitted: true,
+    });
   }
 
   handleEdit(e) {
-    // console.log(
-    //   `name: ${this.state.name} email: ${this.state.email} phone: ${this.state.phone}`
-    // );
-    // console.log(`submitted: ${this.state.submitted}`);
-
     this.setState({
       submitted: false,
     });
