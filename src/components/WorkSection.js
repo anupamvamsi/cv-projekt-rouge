@@ -143,6 +143,7 @@ export class WorkSection extends Component {
 
           <div className="btn-container">
             <BtnEdit handleEdit={this.handleEdit} />
+            <BtnAdd />
           </div>
         </Section>
       );
