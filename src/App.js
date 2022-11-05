@@ -13,11 +13,48 @@ class App extends Component {
 
     this.state = {
       numWorkSection: 1,
-      workSections: [<WorkSection key={uniqid()} />],
+      workSections: [
+        <WorkSection key={uniqid()} add={() => this.addSection('work')} />,
+      ],
 
       numEduSection: 1,
-      eduSections: [<EducationSection key={uniqid()} />],
+      eduSections: [
+        <EducationSection key={uniqid()} add={() => this.addSection('edu')} />,
+      ],
     };
+  }
+
+  addSection(sectionType) {
+    if (sectionType === 'work') {
+      this.setState(
+        {
+          numWorkSection: this.state.numWorkSection + 1,
+          workSections: this.state.workSections.concat(
+            <WorkSection key={uniqid()} add={() => this.addSection('work')} />
+          ),
+        },
+        () => {
+          console.log(this.state.numWorkSection, this.state.workSections);
+        }
+      );
+    }
+
+    if (sectionType === 'edu') {
+      this.setState(
+        {
+          numEduSection: this.state.numEduSection + 1,
+          eduSections: this.state.eduSections.concat(
+            <EducationSection
+              key={uniqid()}
+              add={() => this.addSection('edu')}
+            />
+          ),
+        },
+        () => {
+          console.log(this.state.numEduSection, this.state.eduSections);
+        }
+      );
+    }
   }
 
   render() {

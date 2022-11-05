@@ -9,7 +9,7 @@ export class BtnAdd extends Component {
 
   render() {
     return (
-      <button className="btn-add" type="button">
+      <button className="btn-add" type="button" onClick={this.props.add}>
         +
       </button>
     );

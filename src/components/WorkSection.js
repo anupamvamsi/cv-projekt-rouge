@@ -100,7 +100,7 @@ export class WorkSection extends Component {
           <div className="btn-container">
             <BtnSubmit handleSubmit={this.handleSubmit} />
             <BtnDelete />
-            <BtnAdd />
+            <BtnAdd add={this.props.add} />
           </div>
         </Section>
       );
