@@ -9,7 +9,7 @@ export class BtnDelete extends Component {
 
   render() {
     return (
-      <button className="btn-delete" type="button">
+      <button className="btn-delete" type="button" onClick={this.props.del}>
         Delete
       </button>
     );

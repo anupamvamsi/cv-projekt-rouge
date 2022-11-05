@@ -3,7 +3,6 @@ import { BtnSubmit } from './BtnSubmit';
 import { BtnEdit } from './BtnEdit';
 import { Input } from './Input';
 import { Section } from './Section';
-import '../styles/sections.css';
 
 export class PersonalSection extends Component {
   constructor(props) {
