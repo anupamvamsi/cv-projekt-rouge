@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cv-projekt-rouge/static/css/main.da7c5a9f.css",
+    "main.js": "/cv-projekt-rouge/static/js/main.85d5b7e3.js",
+    "index.html": "/cv-projekt-rouge/index.html",
+    "main.da7c5a9f.css.map": "/cv-projekt-rouge/static/css/main.da7c5a9f.css.map",
+    "main.85d5b7e3.js.map": "/cv-projekt-rouge/static/js/main.85d5b7e3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da7c5a9f.css",
+    "static/js/main.85d5b7e3.js"
+  ]
+}
