@@ -1,5 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 import { Section } from './components/Section';
 import { WorkSection } from './components/WorkSection';
 import { SectionTitle } from './components/SectionTitle';
@@ -10,7 +11,13 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      numWorkSection: 1,
+      workSections: [<WorkSection key={uniqid()} />],
+
+      numEduSection: 1,
+      eduSections: [<EducationSection key={uniqid()} />],
+    };
   }
 
   render() {
@@ -29,13 +36,11 @@ class App extends Component {
           </Section>
 
           <SectionTitle className="section-title">Work Experience</SectionTitle>
-          <Section className="info-work">
-            <WorkSection className="info-experience" />
-          </Section>
+          <Section className="info-work">{this.state.workSections}</Section>
 
           <SectionTitle className="section-title">Education</SectionTitle>
           <Section className="info-education" sectionTitle="Education">
-            <EducationSection />
+            {this.state.eduSections}
           </Section>
         </div>
       </div>
