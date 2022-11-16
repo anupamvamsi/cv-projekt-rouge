@@ -1,96 +1,78 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { BtnSubmit } from './BtnSubmit';
 import { BtnEdit } from './BtnEdit';
 import { Input } from './Input';
 import { Section } from './Section';
 
-export class PersonalSection extends Component {
-  constructor(props) {
-    super(props);
+export function PersonalSection(props) {
+  // state
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
-
-    this.state = {
-      name: '',
-      email: '',
-      phone: '',
-      submitted: false,
-    };
-  }
-
-  handleChange(e) {
+  const handleChange = (e) => {
     if (e.target.classList.contains('input-name')) {
-      this.setState({
-        name: e.target.value,
-      });
+      console.log(e.target.value);
+      setName(e.target.value);
     } else if (e.target.classList.contains('input-email')) {
-      this.setState({
-        email: e.target.value,
-      });
+      console.log(e.target.value);
+      setEmail(e.target.value);
     } else if (e.target.classList.contains('input-phone')) {
-      this.setState({
-        phone: e.target.value,
-      });
+      console.log(e.target.value);
+      setPhone(e.target.value);
     }
-  }
+  };
 
-  handleSubmit(e) {
-    this.setState({
-      submitted: true,
-    });
-  }
+  const handleSubmit = (e) => {
+    setSubmitted(true);
+  };
 
-  handleEdit(e) {
-    this.setState({
-      submitted: false,
-    });
-  }
+  const handleEdit = (e) => {
+    setSubmitted(false);
+  };
 
-  render() {
-    if (!this.state.submitted) {
-      return (
-        <Section className="details-personal">
-          <Input
-            className="input-txt input-name"
-            labelDesc="Name"
-            type="text"
-            value={this.state.name}
-            handleChange={this.handleChange}
-          />
-          <Input
-            className="input-txt input-email"
-            labelDesc="Email"
-            type="email"
-            value={this.state.email}
-            handleChange={this.handleChange}
-          />
-          <Input
-            className="input-txt input-phone"
-            labelDesc="Phone"
-            type="tel"
-            value={this.state.phone}
-            handleChange={this.handleChange}
-          />
+  if (!submitted) {
+    return (
+      <Section className="details-personal">
+        <Input
+          className="input-txt input-name"
+          labelDesc="Name"
+          type="text"
+          value={name}
+          handleChange={handleChange}
+        />
+        <Input
+          className="input-txt input-email"
+          labelDesc="Email"
+          type="email"
+          value={email}
+          handleChange={handleChange}
+        />
+        <Input
+          className="input-txt input-phone"
+          labelDesc="Phone"
+          type="tel"
+          value={phone}
+          handleChange={handleChange}
+        />
 
-          <div className="btn-container">
-            <BtnSubmit handleSubmit={this.handleSubmit} />
-          </div>
-        </Section>
-      );
-    } else {
-      return (
-        <Section className="details-personal">
-          <p>{this.state.name}</p>
-          <p>{this.state.email}</p>
-          <p>{this.state.phone}</p>
+        <div className="btn-container">
+          <BtnSubmit handleSubmit={handleSubmit} />
+        </div>
+      </Section>
+    );
+  } else {
+    return (
+      <Section className="details-personal">
+        <p>{name}</p>
+        <p>{email}</p>
+        <p>{phone}</p>
 
-          <div className="btn-container">
-            <BtnEdit handleEdit={this.handleEdit} />
-          </div>
-        </Section>
-      );
-    }
+        <div className="btn-container">
+          <BtnEdit handleEdit={handleEdit} />
+        </div>
+      </Section>
+    );
   }
 }
