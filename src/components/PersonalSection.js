@@ -13,13 +13,10 @@ export function PersonalSection(props) {
 
   const handleChange = (e) => {
     if (e.target.classList.contains('input-name')) {
-      console.log(e.target.value);
       setName(e.target.value);
     } else if (e.target.classList.contains('input-email')) {
-      console.log(e.target.value);
       setEmail(e.target.value);
     } else if (e.target.classList.contains('input-phone')) {
-      console.log(e.target.value);
       setPhone(e.target.value);
     }
   };

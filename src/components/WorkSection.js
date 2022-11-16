@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { BtnAdd } from './BtnAdd';
 import { BtnDelete } from './BtnDelete';
 import { BtnEdit } from './BtnEdit';
@@ -7,124 +7,97 @@ import { DateRange } from './DateRange';
 import { Input } from './Input';
 import { Section } from './Section';
 
-export class WorkSection extends Component {
-  constructor(props) {
-    super(props);
+export function WorkSection(props) {
+  // state
+  const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
+  const [dateStart, setDateStart] = useState('');
+  const [dateEnd, setDateEnd] = useState('');
+  const [currentlyWorking, setCurrentlyWorking] = useState(false);
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
+  const [submitted, setSubmitted] = useState(false);
 
-    this.state = {
-      company: '',
-      position: '',
-      dateStart: '',
-      dateEnd: '',
-      currentlyWorking: false,
-
-      submitted: false,
-    };
-  }
-
-  handleChange(e) {
+  const handleChange = (e) => {
     if (e.target.classList.contains('input-company')) {
-      this.setState({
-        company: e.target.value,
-      });
+      setCompany(e.target.value);
     } else if (e.target.classList.contains('input-position')) {
-      this.setState({
-        position: e.target.value,
-      });
+      setPosition(e.target.value);
     } else if (e.target.classList.contains('input-date-start')) {
-      this.setState({
-        dateStart: e.target.value,
-      });
+      setDateStart(e.target.value);
     } else if (e.target.classList.contains('input-date-end')) {
-      this.setState((state, props) => {
-        if (
-          this.state.dateStart !== '' &&
-          this.state.currentlyWorking === false &&
-          this.state.dateStart < e.target.value
-        ) {
-          return {
-            dateEnd: e.target.value,
-          };
-        }
-      });
+      if (
+        dateStart !== '' &&
+        currentlyWorking === false &&
+        dateStart < e.target.value
+      ) {
+        setDateEnd(e.target.value);
+      }
     } else if (e.target.classList.contains('input-checkbox')) {
-      this.setState({
-        currentlyWorking: e.target.checked,
-      });
+      setCurrentlyWorking(e.target.checked);
     }
-  }
+  };
 
-  handleSubmit(e) {
-    this.setState({
-      submitted: true,
-    });
-  }
+  const handleSubmit = (e) => {
+    setSubmitted(true);
+  };
 
-  handleEdit(e) {
-    this.setState({
-      submitted: false,
-    });
-  }
+  const handleEdit = (e) => {
+    setSubmitted(false);
+  };
 
-  render() {
-    if (!this.state.submitted) {
-      return (
-        <Section className="details-work">
-          <Input
-            className="input-txt input-company"
-            labelDesc="Company"
-            inputType="text"
-            value={this.state.company}
-            handleChange={this.handleChange}
-          />
-          <Input
-            className="input-txt input-position"
-            labelDesc="Position"
-            inputType="text"
-            value={this.state.position}
-            handleChange={this.handleChange}
-          />
-          {/* <Input labelDesc="TASKS? NEEDS TEXTAREA" inputType="text"/> */}
+  if (!submitted) {
+    return (
+      <Section className="details-work">
+        <Input
+          className="input-txt input-company"
+          labelDesc="Company"
+          inputType="text"
+          value={company}
+          handleChange={handleChange}
+        />
+        <Input
+          className="input-txt input-position"
+          labelDesc="Position"
+          inputType="text"
+          value={position}
+          handleChange={handleChange}
+        />
+        {/* <Input labelDesc="TASKS? NEEDS TEXTAREA" inputType="text"/> */}
 
-          <DateRange
-            dateStart={this.state.dateStart}
-            dateEnd={this.state.dateEnd}
-            currentlyWorking={this.state.currentlyWorking}
-            handleChange={this.handleChange}
-          />
+        <DateRange
+          dateStart={dateStart}
+          dateEnd={dateEnd}
+          currentlyWorking={currentlyWorking}
+          handleChange={handleChange}
+        />
 
-          <div className="btn-container">
-            <BtnSubmit handleSubmit={this.handleSubmit} />
-            <BtnDelete del={this.props.del} />
-            <BtnAdd add={this.props.add} />
-          </div>
-        </Section>
-      );
-    } else {
-      return (
-        <Section className="details-work">
-          <p>{this.state.company}</p>
-          <p>{this.state.position}</p>
-          <p>
-            {(() => {
-              if (!this.state.currentlyWorking) {
-                return `${this.state.dateStart} to ${this.state.dateEnd}`;
-              } else {
-                return `${this.state.dateStart} to present`;
-              }
-            })()}
-          </p>
+        <div className="btn-container">
+          <BtnSubmit handleSubmit={handleSubmit} />
+          <BtnDelete del={props.del} />
+          <BtnAdd add={props.add} />
+        </div>
+      </Section>
+    );
+  } else {
+    return (
+      <Section className="details-work">
+        <p>{company}</p>
+        <p>{position}</p>
+        <p>
+          {(() => {
+            if (!currentlyWorking) {
+              return `${dateStart} to ${dateEnd}`;
+            } else {
+              return `${dateStart} to present`;
+            }
+          })()}
+        </p>
 
-          <div className="btn-container">
-            <BtnEdit handleEdit={this.handleEdit} />
-            <BtnAdd add={this.props.add} />
-          </div>
-        </Section>
-      );
-    }
+        <div className="btn-container">
+          <BtnEdit handleEdit={handleEdit} />
+          <BtnAdd add={props.add} />
+        </div>
+      </Section>
+    );
   }
 }
