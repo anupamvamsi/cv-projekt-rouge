@@ -1,6 +1,6 @@
 import './App.css';
 import './styles/sections.css';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import uniqid from 'uniqid';
 import { Section } from './components/Section';
 import { WorkSection } from './components/WorkSection';
@@ -9,135 +9,111 @@ import { EducationSection } from './components/EducationSection';
 import { PersonalSection } from './components/PersonalSection';
 import { BtnAdd } from './components/BtnAdd';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+export default function App(props) {
+  const firstIDWork = uniqid();
+  const firstIDEdu = uniqid();
+  const [numWorkSections, setNumWorkSections] = useState(1);
+  const [workSections, setWorkSections] = useState([
+    <WorkSection
+      key={firstIDWork}
+      add={() => addSection('work')}
+      del={(e) => delSection(e, firstIDWork, 'work')}
+    />,
+  ]);
 
-    this.addSection = this.addSection.bind(this);
-    this.delSection = this.delSection.bind(this);
+  const [numEduSections, setNumEduSections] = useState(1);
+  const [eduSections, setEduSections] = useState([
+    <EducationSection
+      key={firstIDEdu}
+      add={() => addSection('edu')}
+      del={(e) => delSection(e, firstIDEdu, 'edu')}
+    />,
+  ]);
 
-    const firstIDWork = uniqid();
-    const firstIDEdu = uniqid();
-    this.state = {
-      numWorkSection: 1,
-      workSections: [
-        <WorkSection
-          key={firstIDWork}
-          add={() => this.addSection('work')}
-          del={(e) => this.delSection(e, firstIDWork, 'work')}
-        />,
-      ],
-
-      numEduSection: 1,
-      eduSections: [
-        <EducationSection
-          key={firstIDEdu}
-          add={() => this.addSection('edu')}
-          del={(e) => this.delSection(e, firstIDEdu, 'edu')}
-        />,
-      ],
-    };
-  }
-
-  addSection(sectionType) {
+  const addSection = (sectionType) => {
     if (sectionType === 'work') {
       const idWork = uniqid();
-      this.setState({
-        numWorkSection: this.state.numWorkSection + 1,
-        workSections: this.state.workSections.concat(
+      setNumWorkSections(numWorkSections + 1);
+
+      setWorkSections(
+        workSections.concat(
           <WorkSection
             key={idWork}
-            add={() => this.addSection('work')}
+            add={() => addSection('work')}
             del={(e) => {
-              this.delSection(e, idWork, 'work');
+              delSection(e, idWork, 'work');
             }}
           />
-        ),
-      });
+        )
+      );
     }
 
     if (sectionType === 'edu') {
       const idEdu = uniqid();
-      this.setState({
-        numEduSection: this.state.numEduSection + 1,
-        eduSections: this.state.eduSections.concat(
+      setNumEduSections(numEduSections + 1);
+      setEduSections(
+        eduSections.concat(
           <EducationSection
             key={idEdu}
-            add={() => this.addSection('edu')}
+            add={() => addSection('edu')}
             del={(e) => {
-              this.delSection(e, idEdu, 'edu');
+              delSection(e, idEdu, 'edu');
             }}
           />
-        ),
-      });
+        )
+      );
     }
-  }
+  };
 
-  delSection(e, uniqueID, sectionType) {
+  const delSection = (e, uniqueID, sectionType) => {
     if (sectionType === 'work') {
-      this.setState({
-        workSections: this.state.workSections.filter((s) => s.key !== uniqueID),
-        numWorkSection: this.state.numWorkSection - 1,
-      });
+      setWorkSections(workSections.filter((s) => s.key !== uniqueID));
+      setNumWorkSections(numWorkSections - 1);
     }
 
     if (sectionType === 'edu') {
-      this.setState({
-        eduSections: this.state.eduSections.filter((s) => s.key !== uniqueID),
-        numEduSection: this.state.numEduSection - 1,
-      });
+      setEduSections(eduSections.filter((s) => s.key !== uniqueID));
+      setNumEduSections(numEduSections - 1);
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="App">
-        <div className="title-container">
-          <h1 className="title">CV Application</h1>
-        </div>
-
-        <div className="editor-container">
-          <SectionTitle className="section-title">
-            Personal Details
-          </SectionTitle>
-          <Section className="info-general" sectionTitle="Personal Details">
-            <PersonalSection className="info-personal" />
-          </Section>
-
-          <SectionTitle className="section-title">Work Experience</SectionTitle>
-          <Section className="info-work">
-            {this.state.workSections}
-            {(() => {
-              if (this.state.workSections.length === 0) {
-                return (
-                  <BtnAdd
-                    className="btn-add"
-                    add={() => this.addSection('work')}
-                  />
-                );
-              }
-            })()}
-          </Section>
-
-          <SectionTitle className="section-title">Education</SectionTitle>
-          <Section className="info-education" sectionTitle="Education">
-            {this.state.eduSections}
-
-            {(() => {
-              if (this.state.eduSections.length === 0) {
-                return (
-                  <BtnAdd
-                    className="btn-add"
-                    add={() => this.addSection('edu')}
-                  />
-                );
-              }
-            })()}
-          </Section>
-        </div>
+  return (
+    <div className="App">
+      <div className="title-container">
+        <h1 className="title">CV Application</h1>
       </div>
-    );
-  }
-}
 
-export default App;
+      <div className="editor-container">
+        <SectionTitle className="section-title">Personal Details</SectionTitle>
+        <Section className="info-general" sectionTitle="Personal Details">
+          <PersonalSection className="info-personal" />
+        </Section>
+
+        <SectionTitle className="section-title">Work Experience</SectionTitle>
+        <Section className="info-work">
+          {workSections}
+          {(() => {
+            if (workSections.length === 0) {
+              return (
+                <BtnAdd className="btn-add" add={() => addSection('work')} />
+              );
+            }
+          })()}
+        </Section>
+
+        <SectionTitle className="section-title">Education</SectionTitle>
+        <Section className="info-education" sectionTitle="Education">
+          {eduSections}
+
+          {(() => {
+            if (eduSections.length === 0) {
+              return (
+                <BtnAdd className="btn-add" add={() => addSection('edu')} />
+              );
+            }
+          })()}
+        </Section>
+      </div>
+    </div>
+  );
+}
